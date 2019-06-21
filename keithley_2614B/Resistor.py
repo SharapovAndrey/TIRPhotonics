@@ -28,23 +28,38 @@ for level in level_list:
     volt_vals.append(volt_val)
     cur_vals.append(cur_val)
 
-plt.plot(volt_vals, cur_vals, 'go-', linewidth=1, markersize=5)
-plt.xlabel('Voltage, V')
-plt.ylabel('Current, A')
-plt.show()
-
 #extract linear coefficient
 from scipy.optimize import curve_fit
 
 #volt_vals = [1., 2., 3., 4.,]
 #cur_vals = [1., 2., 3., 4.,]
 
-def lin_func(x, a, b):
-    return a*x+b
+#def lin_func(x, a, b):
+#    return a*x+b
+#def exp_func(x, a, b, c):
+#    return a * np.exp(-b * x) + c
 
-def exp_func(x, a, b, c):
-    return a * np.exp(-b * x) + c
+lin_func = lambda x, a, b: a*x+b
+exp_func = lambda x, a, b, c: a * np.exp(-b * x) + c
 
 popt, pcov = curve_fit(lin_func, volt_vals, cur_vals)
-slope = popt[0]
-print 'R = ' + slope + ' Ohm'
+#print popt
+#print pcov
+
+#linear
+R = 1./popt[0]
+print 'R = ' + str(R) + ' Ohm'
+U_0 = -popt[1]/popt[0]
+print 'U0 = ' + str(U_0) + ' V'
+
+x_fit = np.arange(min(volt_vals), max(volt_vals), 0.01)
+y_fit = lin_func(x_fit, popt[0], popt[1])
+
+
+plt.plot(volt_vals, cur_vals, 'go-', linewidth=1, markersize=5, label='exp')
+plt.plot(x_fit, y_fit, 'b-', linewidth=0.5, label='fit')
+plt.xlabel('Voltage, V')
+plt.ylabel('Current, A')
+plt.grid()
+plt.legend()
+plt.show()
