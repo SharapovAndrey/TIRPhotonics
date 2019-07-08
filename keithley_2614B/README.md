@@ -8,3 +8,4 @@ To work with this model of digital multimeter one requires the following softwar
 Steps:
 1) Read device information (IDN.py)
 2) Build current–voltage curve of 100 Ohm resistor and estimate the resistance by linear fitting (Resistor.py)
+3) Measure IV-characteristics of diodes (Diode.py) and fit them (Fit.py) with exponent I = I0 exp(eV/nkT), where key parameters are I0 and nonideality factor
