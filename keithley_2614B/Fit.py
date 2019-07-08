@@ -10,11 +10,13 @@ def exp_func(x, a, b):
     return a * np.exp(b * np.double(x))
     #return a * np.exp(- e * np.double(x) / b / k / T)
 
-specimen_name = '48_3_2_1'
-input_filename = 'Sh_48_3_2_1_01079_full_high.csv'
+specimen_name = '48_2_7-6'
+input_filename = 'Sh_48_2_7-6_08079.csv'
 #specimen_name = '48_3_1_1'
 #input_filename = 'Sh_48_3_1_1_01079.csv'
 
+positive_diapason_tuples = [(0.5, 0.8), (0.8, 1.25), (1.25, 2.0)]#, (0.55, 0.65)]
+negative_diapason_tuples = [(0.3, 0.48), (0.5, 1.0)]
 
 df = pd.read_csv(input_filename)
 #{'Voltage, V': volt_vals, 'Current, A': cur_vals})
@@ -40,9 +42,6 @@ pos_volt_vals = list(pos_volt_vals)
 fig = plt.figure(figsize=(15, 20))
 plt.plot(pos_volt_vals, pos_cur_vals, 'go', linewidth=1, markersize=1.5, label='positive branch')
 plt.plot(neg_volt_vals, neg_cur_vals, 'bo', linewidth=1, markersize=1.5, label='negative inverted')
-
-
-positive_diapason_tuples = [(0.2, 0.4), (0.4, 0.9), (0.9, 2.0)]#, (0.55, 0.65)]
 
 opt_parameters = []
 
@@ -85,8 +84,6 @@ plt.yscale('log')
 
 print '\nNegative part fitting\n'
 
-negative_diapason_tuples = [(0.25, 0.45), (0.5, 1.0)]
-
 for i in range(len(negative_diapason_tuples)):
     print 'Diapason ' + str(i) + ' for fit'
     #select diapason
@@ -119,7 +116,7 @@ plt.xlabel('Voltage, V')
 plt.ylabel('Current, A')
 plt.title('Specimen ' + specimen_name)
 plt.grid()
-plt.legend()
+plt.legend(loc='lower right')
 plt.show()
 fig.savefig('Specimen ' + specimen_name + '.png')
 
