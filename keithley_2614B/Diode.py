@@ -11,10 +11,12 @@ cur_vals = []
 
 v_max = 2.
 v_min = -0.8
-level_list = np.arange(0, v_max, 0.02, dtype=np.double)
-level_list = np.append(level_list, np.arange(v_max, 0, -0.02, dtype=np.double))
-level_list = np.append(level_list, np.arange(0, v_min, -0.005, dtype=np.double))
-level_list = np.append(level_list, np.arange(v_min, 0, 0.005, dtype=np.double))
+step_pos = 0.02#0.02
+step_neg = 0.005#0.005
+level_list = np.arange(0, v_max, step_pos, dtype=np.double) #0.02
+level_list = np.append(level_list, np.arange(v_max, 0, -step_pos, dtype=np.double))
+level_list = np.append(level_list, np.arange(0, v_min, -step_neg, dtype=np.double))
+level_list = np.append(level_list, np.arange(v_min, 0, step_neg, dtype=np.double))
 for level in level_list:
     instrument.write("smua.reset()")
     instrument.write("smua.sense = smua.SENSE_LOCAL") #Select local sense (2-wire).
@@ -34,7 +36,7 @@ for level in level_list:
 
 import pandas as pd
 df = pd.DataFrame({'Voltage, V': volt_vals, 'Current, A': cur_vals})
-df.to_csv('Sh_48_3_2_1_01079_full_high.csv')
+df.to_csv('Sh_48_2_7-9_08079.csv')
 
 #extract linear coefficient
 from scipy.optimize import curve_fit
