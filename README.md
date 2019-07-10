@@ -1,4 +1,4 @@
-# TinPhotonics
+# TIRPhotonics
 ### Optoelectrical properties of quasiplanar Ti/Si/Ti structures
 rus: Оптоэлектронные свойства квазипланарных структур Ti/Si/Ti
 
