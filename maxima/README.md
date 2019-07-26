@@ -14,8 +14,10 @@
 
 2. Reproduction of Fig. 1 in [2], 
 
-2.1. "RT dielectric film verification.wxmx"
+    2.1. "RT dielectric film verification.wxmx"
 
-2.2. "RT dielectric film matrix.wxmx" -- the same as 2.1, but using characteristic matrix of the film ([1], 1.6.2, formulae ~39, p. ~58), i.e. transfer matrix method (TMM) for dielectric films
+    2.2. "RT dielectric film matrix.wxmx" -- the same as 2.1, but using characteristic matrix of the film ([1], 1.6.2, formulae ~39, p. ~58), i.e. transfer matrix method (TMM) for dielectric films
 
 3. Reproduction of Fig. 3a in [3], "ART TiN-Ti-TiN film verification.wxmx", i.e. TMM for arbitrary films
+
+4. Optimization of Ti thickness film on Si substrate for maximum transmittance
